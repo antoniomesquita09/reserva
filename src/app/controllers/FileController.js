@@ -252,7 +252,7 @@ class FileController {
         "..",
         "tmp",
         "uploads",
-        "invalidPhrases"
+        "invalidPhrases.csv"
       );
 
       const validPhrasesPath = path.resolve(
@@ -262,7 +262,7 @@ class FileController {
         "..",
         "tmp",
         "uploads",
-        "validPhrases"
+        "validPhrases.csv"
       );
 
       if (isTeam || isBrand || isBadWord || isTooLong) {
