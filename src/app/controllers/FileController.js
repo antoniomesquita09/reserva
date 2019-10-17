@@ -18,8 +18,6 @@ class FileController {
 
     const phraseArray = fileText.split("\n");
 
-    // console.log(phraseArray);
-
     const teams = [
       "flamengo",
       "santos",
@@ -43,31 +41,209 @@ class FileController {
       "chapecoense"
     ];
 
-    /* var i;
-    for (i = 0; i < phraseArray.length; i++) {
-      // text += cars[i] + "<br>";
-      console.log(phraseArray[i]);
-      function checkTeams(phrase) {
-        return phrase == "1111";
-      }
-      if (phraseArray.find(checkTeams)) console.log("tem 1");
-    } */
+    const brands = [
+      "bradesco",
+      "itau",
+      "banco do brasil",
+      "petrobras",
+      "caixa",
+      "pao de açucar",
+      "vivo",
+      "vale",
+      "oi",
+      "gerdau",
+      "skol",
+      "sadia",
+      "bndes",
+      "casas bahia",
+      "natura",
+      "perdigao",
+      "americanas",
+      "brahma",
+      "ipiranga",
+      "tam",
+      "embratel",
+      "souza cruz	",
+      "unimed",
+      "net",
+      "raizen",
+      "embraer",
+      "rede globo",
+      "globo",
+      "schinchariol",
+      "nova skin",
+      "correios",
+      "magazine luiza",
+      "aes eletropaulo",
+      "eletropaulo",
+      "amil",
+      "riachuelo",
+      "eletrobras",
+      "submarino",
+      "csn",
+      "cemig",
+      "braskem",
+      "renner",
+      "cpfl energia",
+      "btg pactual",
+      "jbs",
+      "casas pernambucanas",
+      "ponto frio",
+      "cielo",
+      "redecard",
+      "usiminas",
+      "gol",
+      "ultragaz",
+      "light",
+      "banrisul",
+      "suzano",
+      "all",
+      "sanasa",
+      "raiadrogasil",
+      "elmachips",
+      "minerva",
+      "tractebel",
+      "sabesp",
+      "cyrela",
+      "odebrecht",
+      "comgas",
+      "banco do nordeste",
+      "bm&f bovespa",
+      "marisa",
+      "positivo",
+      "fibria",
+      "abril",
+      "semp toshiba",
+      "sao martinho",
+      "klabin",
+      "pdg realty",
+      "tecnisa",
+      "saraiva",
+      "copel",
+      "dasa",
+      "fertilizantesheringer",
+      "havaianas",
+      "elektro",
+      "duratex",
+      "bancomercantil do brasil",
+      "totvs",
+      "marfrig",
+      "hering",
+      "mrv engenharia",
+      "panamericano",
+      "localiza",
+      "tigre",
+      "amplaenergia",
+      "gafisa",
+      "arezzo",
+      "cesp",
+      "estacio",
+      "itautec",
+      "rossi residencial",
+      "cteep",
+      "multiplan",
+      "anhangueraeducacional",
+      "bicbanco",
+      "copasa"
+    ];
+
+    const badWords = [
+      "anus",
+      "babaovo",
+      "Baba-ovo",
+      "babaca",
+      "baitola",
+      "bicha",
+      "bixa",
+      "boceta",
+      "boiola",
+      "bosseta",
+      "bosta",
+      "brioco",
+      "bronha",
+      "buceta",
+      "bunda",
+      "bunduda",
+      "burra",
+      "burro",
+      "busseta",
+      "cagado",
+      "cagada",
+      "cagao",
+      "canalha",
+      "caralho",
+      "cassete",
+      "corno",
+      "cretina",
+      "cretino",
+      "cu",
+      "culhao",
+      "cuzao",
+      "debiloide",
+      "estupida",
+      "escrota",
+      "estupido",
+      "foda",
+      "fode",
+      "fudendo",
+      "fudido",
+      "grelo",
+      "idiota",
+      "imbecil",
+      "idiotice",
+      "pau",
+      "piranha",
+      "piroca",
+      "piru",
+      "porra",
+      "prostituta",
+      "prostituto",
+      "punheta",
+      "puta",
+      "puto",
+      "rabuda",
+      "rabudo",
+      "retardada",
+      "retardado",
+      "rola",
+      "safada",
+      "safado",
+      "vaca",
+      "vagabunda",
+      "vagabundo",
+      "vagina",
+      "viada",
+      "viado",
+      "viadao",
+      "xerereca",
+      "xereca",
+      "xexeca",
+      "xoxota",
+      "xota",
+      "xana",
+      "xochota"
+    ];
 
     phraseArray.forEach(filter);
 
     function filter(item, index) {
       let phrase = item
         .toLowerCase()
-        .replace(/á|à|ã|â/g, "a")
-        .replace(/é|è|ê/g, "e")
-        .replace(/í|ì/g, "i")
-        .replace(/ó|ò|õ/g, "o");
+        .replace(/á|à|ã|â|ä/g, "a")
+        .replace(/é|è|ê|ë/g, "e")
+        .replace(/í|ì|î|ï/g, "i")
+        .replace(/ó|ò|õ|ö/g, "o")
+        .replace(/ú|ù|ü/g, "u");
 
-      // console.log(phrase);
       let isTeam = false;
+      let isBrand = false;
+      let isBadWord = false;
+      let isTooLong = false;
       isTeam = teams.find(element => element === phrase);
-      // console.log(`Nome de time: ${phrase}\n`);
-      //return false
+      if (!isTeam) isBrand = brands.find(element => element === phrase);
+      if (!isTeam && !isBrand)
+        isBadWord = badWords.find(element => element === phrase);
+      if (phrase.length > 240) isTooLong = true;
 
       const invalidPhrasesPath = path.resolve(
         __dirname,
@@ -79,28 +255,34 @@ class FileController {
         "invalidPhrases"
       );
 
-      if (isTeam) {
-        fs.writeFile(invalidPhrasesPath, `${isTeam}\n`, function(err) {
+      const validPhrasesPath = path.resolve(
+        __dirname,
+        "..",
+        "..",
+        "..",
+        "tmp",
+        "uploads",
+        "validPhrases"
+      );
+
+      if (isTeam || isBrand || isBadWord || isTooLong) {
+        fs.appendFileSync(invalidPhrasesPath, `${phrase}\n`, function(err) {
           if (err) {
             return console.log(err);
           }
-
-          console.log("The file was saved!");
+        });
+      } else {
+        fs.appendFileSync(validPhrasesPath, `${phrase}\n`, function(err) {
+          if (err) {
+            return console.log(err);
+          }
         });
       }
     }
 
-    // const filePath = path.resolve(__dirname, file);
-
-    // console.log(filePath);
-
-    // const text = fs.readFileSync(filePath, "utf8");
-
-    // console.log(text);
-
     fs.unlinkSync(filePath);
 
-    return res.json({ data: "good" });
+    return res.send({ test: "ok" });
   }
 }
 
