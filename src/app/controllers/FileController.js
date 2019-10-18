@@ -14,6 +14,7 @@ class FileController {
       "uploads",
       file
     );
+
     const fileText = fs.readFileSync(filePath, "utf8");
 
     const phraseArray = fileText.split("\n");
@@ -235,15 +236,36 @@ class FileController {
         .replace(/ó|ò|õ|ö/g, "o")
         .replace(/ú|ù|ü/g, "u");
 
-      let isTeam = false;
-      let isBrand = false;
-      let isBadWord = false;
+      if (phrase == "") return;
+
       let isTooLong = false;
-      isTeam = teams.find(element => element === phrase);
-      if (!isTeam) isBrand = brands.find(element => element === phrase);
-      if (!isTeam && !isBrand)
-        isBadWord = badWords.find(element => element === phrase);
-      if (phrase.length > 240) isTooLong = true;
+
+      if (phrase.length > 240) {
+        isTooLong = true;
+      }
+
+      const wordsArray = phrase.split(" ");
+      var isTeam = false;
+      var isBrand = false;
+      var isBadWord = false;
+
+      // isTeam = teams.find(element => element === phrase);
+
+      // isBrand = brands.find(element => element === phrase);
+
+      // issue with two words
+
+      wordsArray.forEach(function check(word) {
+        console.log(word);
+
+        isTeam = teams.find(element => element === word);
+
+        isBrand = brands.find(element => element === word);
+
+        isBadWord = badWords.find(element => element === word);
+      });
+
+      // console.log(!!isTeam, !!isBrand, !!isBadWord);
 
       const invalidPhrasesPath = path.resolve(
         __dirname,
@@ -265,7 +287,7 @@ class FileController {
         "validPhrases.csv"
       );
 
-      if (isTeam || isBrand || isBadWord || isTooLong) {
+      if (!!isTeam || !!isBrand || !!isBadWord || !!isTooLong) {
         fs.appendFileSync(invalidPhrasesPath, `${phrase}\n`, function(err) {
           if (err) {
             return console.log(err);
