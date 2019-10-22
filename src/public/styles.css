@@ -110,12 +110,12 @@ body {
   font-size: 14px;
   border: 0;
   color: #fff;
-  background: #7159c1;
+  background: #b63136;
   margin-top: 5px;
 }
 
 .auth-wrapper form button:hover {
-  background: #634dac;
+  background: #b6292e;
 }
 
 .auth-wrapper form a {
@@ -283,10 +283,10 @@ ul.providers {
   font-size: 14px;
   border: 0;
   color: #fff;
-  background: #7159c1;
+  background: #b63136;
   margin-top: 5px;
 }
 
 .main-wrapper .content form button:hover {
-  background: #634dac;
+  background: #a03f43;
 }

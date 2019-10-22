@@ -250,7 +250,8 @@ class FileController {
 
       for (var i = 0; i < teams.length; i++) {
         var element = teams[i];
-        if (phrase.search(element) != "-1") {
+        var re = new RegExp(`\\b${element}\\b`, "gi");
+        if (phrase.match(re)) {
           isTeam = true;
           break;
         }
@@ -258,14 +259,16 @@ class FileController {
 
       for (var i = 0; i < brands.length; i++) {
         var element = brands[i];
-        if (phrase.search(element) != "-1") {
+        var re = new RegExp(`\\b${element}\\b`, "gi");
+        if (phrase.match(re)) {
           isBrand = true;
           break;
         }
       }
       for (var i = 0; i < badWords.length; i++) {
         var element = badWords[i];
-        if (phrase.search(element) != "-1") {
+        var re = new RegExp(`\\b${element}\\b`, "gi");
+        if (phrase.match(re)) {
           isBadWord = true;
           break;
         }
