@@ -244,28 +244,32 @@ class FileController {
         isTooLong = true;
       }
 
-      const wordsArray = phrase.split(" ");
       var isTeam = false;
       var isBrand = false;
       var isBadWord = false;
 
-      // isTeam = teams.find(element => element === phrase);
+      for (var i = 0; i < teams.length; i++) {
+        var element = teams[i];
+        if (phrase.search(element) != "-1") {
+          isTeam = true;
+          break;
+        }
+      }
 
-      // isBrand = brands.find(element => element === phrase);
-
-      // issue with two words
-
-      wordsArray.forEach(function check(word) {
-        console.log(word);
-
-        isTeam = teams.find(element => element === word);
-
-        isBrand = brands.find(element => element === word);
-
-        isBadWord = badWords.find(element => element === word);
-      });
-
-      // console.log(!!isTeam, !!isBrand, !!isBadWord);
+      for (var i = 0; i < brands.length; i++) {
+        var element = brands[i];
+        if (phrase.search(element) != "-1") {
+          isBrand = true;
+          break;
+        }
+      }
+      for (var i = 0; i < badWords.length; i++) {
+        var element = badWords[i];
+        if (phrase.search(element) != "-1") {
+          isBadWord = true;
+          break;
+        }
+      }
 
       const invalidPhrasesPath = path.resolve(
         __dirname,
