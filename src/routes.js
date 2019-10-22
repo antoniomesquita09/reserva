@@ -8,8 +8,6 @@ const FileController = require("./app/controllers/FileController");
 
 routes.post("/test", upload.single("file"), FileController.index);
 
-routes.get("/", (req, res) => {
-  return res.json({ test: "uau" });
-});
+routes.get("/", FileController.create);
 
 module.exports = routes;

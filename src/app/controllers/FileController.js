@@ -310,6 +310,10 @@ class FileController {
 
     return res.send({ test: "ok" });
   }
+
+  create(req, res) {
+    return res.render("addFile/index.njk");
+  }
 }
 
 module.exports = new FileController();

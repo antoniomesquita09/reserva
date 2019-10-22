@@ -1,0 +1,10 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+  <div class="content">
+    <form action="/test" method="post" enctype="multipart/form-data">
+      <input id="file" name="file" type="file" />
+      <button type="submit">Enviar arquivo</button>
+    </form>
+  </div>
+{% endblock %}
