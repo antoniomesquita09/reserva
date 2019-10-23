@@ -311,11 +311,31 @@ class FileController {
 
     fs.unlinkSync(filePath);
 
-    return res.send({ test: "ok" });
+    return res.redirect("/download");
   }
 
   create(req, res) {
     return res.render("addFile/index.njk");
+  }
+
+  download(req, res) {
+    return res.render("downloadFile/index.njk");
+  }
+
+  show(req, res) {
+    const { file } = req.params;
+
+    const filePath = path.resolve(
+      __dirname,
+      "..",
+      "..",
+      "..",
+      "tmp",
+      "uploads",
+      file
+    );
+
+    return res.sendFile(filePath);
   }
 }
 

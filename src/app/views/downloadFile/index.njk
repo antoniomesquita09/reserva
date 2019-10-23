@@ -1,0 +1,10 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+  <div class="content">
+  <p>Faça o download dos arquivos de frases válidas e inválidas abaixo</p>
+    <button type="button"><a href="/files/validPhrases.csv" download>Download arquivo de frases validas</a></button>
+    <button type="button"><a href="/files/invalidPhrases.csv" download>Download arquivo de frases inválidas</a></button>
+    <button type="button"><a href="/files/invalidPhrases.csv" download>Download arquivo de frases inválidas e detalhadas</a></button>
+  </div>
+{% endblock %}
