@@ -1,4 +1,4 @@
-#Documentação Desafio de Desenvolvimento Produtos Digitais
+# Documentação Desafio de Desenvolvimento Produtos Digitais
 
 Após extrair os arquivos da aplicação do arquivo **.zip** precisaremos ter instalado algumas ferramentas para executar o programa da perfeitamente!
 
@@ -17,7 +17,7 @@ Faça download do [Windows Installer](https://nodejs.org/en/) diretamente no sit
 
 Agora você provavelmente verá a sua versão do node ao digitar o comando `node -v` ou `npm -v` no terminal.
 
-##Iniciando a aplicação
+## Iniciando a aplicação
 
 Dentro da pasta raiz da nossa aplicação execute os seguintes comandos:
 
