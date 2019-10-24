@@ -35,3 +35,7 @@ Se tudo deu certo até aqui você estará vendo algo parecido com isso:
 
 Agora basta abrir o seu navegador preferido e entrar na seguinte URL:
 `http://localhost:3333/`
+
+Espero que gostem!
+
+Autor: Antonio Mesquita Junior
