@@ -2,9 +2,10 @@
 
 {% block body %}
   <div class="content">
+  <img src="https://testes-tonin.s3-sa-east-1.amazonaws.com/reserva-logo-3D992791CE-seeklogo.com.png" alt="Reserva"/>
   <p>Faça o download dos arquivos de frases válidas e inválidas abaixo</p>
-    <button type="button"><a href="/files/validPhrases.csv" download>Download arquivo de frases validas</a></button>
+    <button type="button"><a href="/files/validPhrases.csv" download>Download arquivo de frases válidas</a></button>
     <button type="button"><a href="/files/invalidPhrases.csv" download>Download arquivo de frases inválidas</a></button>
-    <button type="button"><a href="/files/invalidPhrases.csv" download>Download arquivo de frases inválidas e detalhadas</a></button>
+    <button id="back-button" type="button"><a href="/">Voltar</a></button>
   </div>
 {% endblock %}

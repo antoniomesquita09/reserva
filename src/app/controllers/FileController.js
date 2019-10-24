@@ -3,6 +3,8 @@ const fs = require("fs");
 
 class FileController {
   index(req, res) {
+    if (!req.file) return res.redirect("/");
+
     const { filename: file } = req.file;
 
     const filePath = path.resolve(
@@ -14,6 +16,43 @@ class FileController {
       "uploads",
       file
     );
+    const invalidPhrasesPath = path.resolve(
+      __dirname,
+      "..",
+      "..",
+      "..",
+      "tmp",
+      "uploads",
+      "invalidPhrases.csv"
+    );
+
+    const validPhrasesPath = path.resolve(
+      __dirname,
+      "..",
+      "..",
+      "..",
+      "tmp",
+      "uploads",
+      "validPhrases.csv"
+    );
+
+    if (fs.existsSync(invalidPhrasesPath)) fs.unlinkSync(invalidPhrasesPath);
+    if (fs.existsSync(validPhrasesPath)) fs.unlinkSync(validPhrasesPath);
+
+    fs.appendFileSync(
+      invalidPhrasesPath,
+      `Frases Inválidas, Motivo\n`,
+      function(err) {
+        if (err) {
+          return console.log(err);
+        }
+      }
+    );
+    fs.appendFileSync(validPhrasesPath, `Frases válidas\n`, function(err) {
+      if (err) {
+        return console.log(err);
+      }
+    });
 
     const fileText = fs.readFileSync(filePath, "utf8");
 
@@ -274,32 +313,26 @@ class FileController {
         }
       }
 
-      const invalidPhrasesPath = path.resolve(
-        __dirname,
-        "..",
-        "..",
-        "..",
-        "tmp",
-        "uploads",
-        "invalidPhrases.csv"
-      );
-
-      const validPhrasesPath = path.resolve(
-        __dirname,
-        "..",
-        "..",
-        "..",
-        "tmp",
-        "uploads",
-        "validPhrases.csv"
-      );
-
       if (!!isTeam || !!isBrand || !!isBadWord || !!isTooLong) {
-        fs.appendFileSync(invalidPhrasesPath, `${phrase}\n`, function(err) {
-          if (err) {
-            return console.log(err);
+        let reason = "";
+        if (!!isTeam) {
+          reason = "Time";
+        } else if (!!isBrand) {
+          reason = "Marca";
+        } else if (!!isBadWord) {
+          reason = "Palavrão";
+        } else {
+          reason = "Maior que 240 caracteres";
+        }
+        fs.appendFileSync(
+          invalidPhrasesPath,
+          `${phrase}, ${reason}\n`,
+          function(err) {
+            if (err) {
+              return console.log(err);
+            }
           }
-        });
+        );
       } else {
         fs.appendFileSync(validPhrasesPath, `${phrase}\n`, function(err) {
           if (err) {
