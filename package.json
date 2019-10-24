@@ -1,6 +1,7 @@
 {
   "name": "reserva",
   "version": "1.0.0",
+  "author": "Antonio Mesquita Júnior",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
