@@ -6,13 +6,15 @@ Caso já tenha o NodeJs instalado no seu computador pode pular as próximas etap
 
 ### Instalando o NodeJs
 
-_MacOs
-``` curl "https://nodejs.org/dist/latest/node-${VERSION:-$(wget -qO- https://nodejs.org/dist/latest/ | sed -nE 's|._>node-(._)\.pkg</a>._|\1|p')}.pkg" > "$HOME/Downloads/node-latest.pkg" && sudo installer -store -pkg "$HOME/Downloads/node-latest.pkg" -target "/" `ou`brew install node```
+* MacOs
+``` curl "https://nodejs.org/dist/latest/node-${VERSION:-$(wget -qO- https://nodejs.org/dist/latest/ | sed -nE 's|._>node-(._)\.pkg</a>._|\1|p')}.pkg" > "$HOME/Downloads/node-latest.pkg" && sudo installer -store -pkg "$HOME/Downloads/node-latest.pkg" -target "/" ```
+ou
+```brew install node```
 
-\*Debian e Ubuntu
+* Debian e Ubuntu
 `pkg install node`
 
-\*Windows
+* Windows
 Faça download do [Windows Installer](https://nodejs.org/en/) diretamente no site oficial do NodeJs.
 
 Agora você provavelmente verá a sua versão do node ao digitar o comando `node -v` ou `npm -v` no terminal.
