@@ -4,7 +4,7 @@ Após extrair os arquivos da aplicação do arquivo **.zip** precisaremos ter in
 
 Caso já tenha o NodeJs instalado no seu computador pode pular as próximas etapas (para checar basta rodar o seguinte comando no terminal: `node --version`).
 
-### Instalando o NodeJs
+## Instalando o NodeJs
 
 * MacOs
 ``` curl "https://nodejs.org/dist/latest/node-${VERSION:-$(wget -qO- https://nodejs.org/dist/latest/ | sed -nE 's|._>node-(._)\.pkg</a>._|\1|p')}.pkg" > "$HOME/Downloads/node-latest.pkg" && sudo installer -store -pkg "$HOME/Downloads/node-latest.pkg" -target "/" ```
