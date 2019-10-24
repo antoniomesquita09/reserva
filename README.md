@@ -1,4 +1,4 @@
-# Documentação Desafio de Desenvolvimento Produtos Digitais
+# Documentação Desafio de Desenvolvimento de Produtos Digitais
 
 Após extrair os arquivos da aplicação do arquivo **.zip** precisaremos ter instalado algumas ferramentas para executar o programa da perfeitamente!
 
